@@ -7,10 +7,8 @@ import {
 } from '../../utilities/unitConverters';
 
 /**
- * Enumeration of possible the hold command argument names.
- *
- * Enumerated here base these nanes are shared accross several functions and this
- * provides a single source of truth.
+ * Enumeration of possible hold command argument names.
+ * Enumerated here because these names are shared across several functions and provide a single source of truth.
  *
  * @property HOLD_COMMAND_ARG_NAMES
  * @type {Object}
@@ -24,7 +22,7 @@ const HOLD_COMMAND_ARG_NAMES = {
 };
 
 /**
- * Parses the the runway of an ils command.
+ * Parses the runway of an ils command.
  *
  * @function ilsParser
  * @param args {array}
