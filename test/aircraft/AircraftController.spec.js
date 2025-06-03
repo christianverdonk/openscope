@@ -1,8 +1,8 @@
 import ava from 'ava';
-// import sinon from 'sinon';
+import sinon from 'sinon';
 
 import AircraftController from '../../src/assets/scripts/client/aircraft/AircraftController';
-import { AIRCRAFT_DEFINITION_LIST_MOCK } from './_mocks/aircraftMocks';
+import { AIRCRAFT_DEFINITION_LIST_MOCK, DEPARTURE_AIRCRAFT_INIT_PROPS_MOCK } from './_mocks/aircraftMocks';
 import { airlineControllerFixture } from '../fixtures/airlineFixtures';
 import { scopeModelFixture } from '../fixtures/scopeFixtures';
 // import { spawnPatternModelArrivalFixture } from '../fixtures/trafficGeneratorFixtures';
@@ -132,6 +132,17 @@ ava('throws when called with invalid scopeModel', (t) => {
 
 ava('does not throw when passed valid parameters', (t) => {
     t.notThrows(() => new AircraftController(AIRCRAFT_DEFINITION_LIST_MOCK, airlineControllerFixture, scopeModelFixture));
+});
+
+ava('.createAircraftWithProps() calls ._createAircraftWithInitializationProps()', (t) => {
+    const controller = new AircraftController(AIRCRAFT_DEFINITION_LIST_MOCK, airlineControllerFixture, scopeModelFixture);
+    const stub = sinon.stub(controller, '_createAircraftWithInitializationProps');
+
+    controller.createAircraftWithProps(DEPARTURE_AIRCRAFT_INIT_PROPS_MOCK);
+
+    t.true(stub.calledWithExactly(DEPARTURE_AIRCRAFT_INIT_PROPS_MOCK));
+
+    stub.restore();
 });
 
 // ava('.createAircraftWithSpawnPatternModel() calls ._buildAircraftProps()', (t) => {

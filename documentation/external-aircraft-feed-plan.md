@@ -21,7 +21,10 @@ Internally, aircraft are constructed with properties such as airline, callsign, 
 ## Proposed Tasks for Decoupling
 
 1. **Expose a Public Creation Interface**
-   - Create a method (or event) on `AircraftController` that accepts an initialization object similar to `_buildAircraftProps` and instantiates an `AircraftModel` without relying on `SpawnPatternModel`.
+   - The `AircraftController` now provides `createAircraftWithProps(initializationProps)`.
+     Pass an initialization object equivalent to the output of `_buildAircraftProps`
+     and the controller will instantiate and add a new `AircraftModel` without any
+     dependency on `SpawnPatternModel`.
 2. **Design External Feed Parser**
    - Build a module to parse external data into the initialization format. This parser should validate required fields and convert coordinates into the simulation's position model.
 3. **Separate Spawn Scheduling**

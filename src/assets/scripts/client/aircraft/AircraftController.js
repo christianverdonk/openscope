@@ -249,6 +249,20 @@ export default class AircraftController {
     }
 
     /**
+     * Create an `AircraftModel` from an initialization object.
+     *
+     * This public method allows external systems to provide aircraft
+     * data directly, bypassing `SpawnPatternModel`.
+     *
+     * @for AircraftController
+     * @method createAircraftWithProps
+     * @param initializationProps {object}
+     */
+    createAircraftWithProps = (initializationProps) => {
+        this._createAircraftWithInitializationProps(initializationProps);
+    }
+
+    /**
      * Build aircraft props for `spawnPatternModel` and add
      * preSpawn data to `baseAircraftProps`.
      *
